@@ -1,1 +1,9 @@
-#Write Dockerfile instructions for Nginx including default.conf.
+#Write Dockerfile instructions for Nginx including
+
+FROM nginx
+ 
+COPY default.conf etc/nginx/conf.d/default.conf
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

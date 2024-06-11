@@ -1,0 +1,23 @@
+services:
+  app:
+    conteiner_name: nestPythonApp
+    build: .
+    depends_on:
+       - db
+
+   nginx:
+      conteiner_name: bestnginx
+      build: ./nginx
+      port: 
+       - 8088:80
+      depends_on:
+       - app
+
+  db:
+    conteiner_name: bestMongoDB
+    image: mongo:4.4.18
+    volumes:
+      - my-data:/data/db
+
+volumes:
+  my_data:
