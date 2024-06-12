@@ -44,7 +44,8 @@ jobs:
           chmod 400 /tmp/aws_private_key.pem
 
           ssh -o StrictHostKeychecking=no -i /tmp/aws_private_key.pem $AWS_USER@$AWS_HOST << EOF
-          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/homework:latest
 
-          docker run -d --name py-app ${{ secrets.DOCKERHUB_USERNAME }}/homework:latest
+          sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/homework:latest
+
+          sudo docker run -d --name py-app ${{ secrets.DOCKERHUB_USERNAME }}/homework:latest
           EOF
