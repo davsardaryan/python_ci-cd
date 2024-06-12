@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build new app
-        run: 
+        run: |
           pwd
           ls -la
           docker build -t test_app:1.0.0 .
