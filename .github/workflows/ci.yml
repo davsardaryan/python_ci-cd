@@ -45,7 +45,10 @@ jobs:
 
           ssh -o StrictHostKeychecking=no -i /tmp/aws_private_key.pem $AWS_USER@$AWS_HOST << EOF
 
+          sudo docker rm -f py-app || true
           sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/homework:latest
-
-          sudo docker run -d --name py-app ${{ secrets.DOCKERHUB_USERNAME }}/homework:latest
+          sudo docker run -d --name py-app -p 5000:5000 ${{ secrets.DOCKERHUB_USERNAME }}/homework:latest
           EOF
+
+      - name: Clean up
+        run: rm /tmp/aws_private_key.pem
