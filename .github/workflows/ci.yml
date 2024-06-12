@@ -17,3 +17,4 @@ jobs:
           pwd
           ls -la
           docker build -t test_app:1.0.0 .
+          docker images
